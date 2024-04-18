@@ -1,21 +1,21 @@
 import numpy as np
-import scipy.stats
+import scipy as sp
+from matplotlib import pyplot as pt
+import test_functions as f
 
-distrib0 = scipy.stats.truncnorm(-3,3,loc=0,scale=1)
-distrib1 = scipy.stats.uniform(scale=1)
+
 numPoints=1000
 
+# uniform dist; [-10,10]
+n10to10 = sp.stats.uniform(loc=-10, scale=20)
+distOne = sp.stats.uniform(loc=1,scale=100)
+
 def main():
-    print(integrate_me(f1, scipy.stats.uniform(scale=1), numPoints))
-    print(integrate_me(Pl0, distrib1, numPoints))
+    print("Starting program...")
+    pt.plot(distOne.rvs(numPoints), distOne.pdf(distOne.rvs(numPoints)))
+    pt.show()
 
-def f1(x):
-    return 1
-
-def Pl0(x):
-    return (scipy.special.eval_legendre(0,x))**2
-
-def integrate_me(f, distrib, npts):
+def integrate(f, distrib, npts):
     x = distrib.rvs(npts)
     ps = distrib.pdf(x)
     f = f(x)
