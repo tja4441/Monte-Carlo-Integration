@@ -5,7 +5,7 @@
 import scipy as sp
 
 def one(x): # f(x)=1
-    return 1
+    return 0*x+1
 
 def Pl0(x): # f(x)=P_0(x)^2
     return (sp.special.eval_legendre(0,x))**2
